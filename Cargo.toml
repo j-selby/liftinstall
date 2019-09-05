@@ -11,47 +11,47 @@ build = "build.rs"
 web-view = {git = "https://github.com/j-selby/web-view.git", rev = "752106e4637356cbdb39a0bf1113ea3ae8a14243"}
 
 hyper = "0.11.27"
-futures = "0.1.25"
-mime_guess = "1.8.6"
-url = "1.7.2"
+futures = "0.1.29"
+mime_guess = "2.0"
+url = "2.1"
 
-reqwest = "0.9.12"
-number_prefix = "0.3.0"
+reqwest = "0.9.22"
+number_prefix = "0.3"
 
-serde = "1.0.89"
-serde_derive = "1.0.89"
-serde_json = "1.0.39"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
 
-toml = "0.5.0"
+toml = "0.5"
 
-semver = {version = "0.9.0", features = ["serde"]}
-regex = "1.1.5"
+semver = {version = "0.9", features = ["serde"]}
+regex = "1.3"
 
-dirs = "1.0.5"
-zip = "0.5.1"
-xz2 = "0.1.6"
+dirs = "2.0"
+zip = "0.5"
+xz2 = "0.1"
 tar = "0.4"
 
 log = "0.4"
 fern = "0.5"
-chrono = "0.4.6"
+chrono = "0.4"
 
-clap = "2.32.0"
+clap = "2.33"
 
 [build-dependencies]
-walkdir = "2.2.7"
-serde = "1.0.89"
-serde_derive = "1.0.89"
-toml = "0.5.0"
-which = "2.0.1"
+walkdir = "2.2"
+serde = "1.0"
+serde_derive = "1.0"
+toml = "0.5"
+which = "3.1"
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["psapi", "winbase", "winioctl", "winnt"] }
 widestring = "0.4.0"
 
 [target.'cfg(not(windows))'.dependencies]
-sysinfo = "0.8.2"
-slug = "0.1.4"
+sysinfo = "0.9"
+slug = "0.1"
 
 [target.'cfg(windows)'.build-dependencies]
 winres = "0.1"
