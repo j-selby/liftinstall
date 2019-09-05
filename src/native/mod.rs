@@ -295,7 +295,7 @@ mod natives {
                     Ok(file) => file,
                     Err(e) => return Err(format!("Unable to create desktop file: {}", e)),
                 };
-                let mut desktop_f = desktop_f.write_all(desktop_file.as_bytes());
+                let desktop_f = desktop_f.write_all(desktop_file.as_bytes());
                 match desktop_f {
                     Ok(_) => Ok("".to_string()),
                     Err(e) => Err(format!("Unable to write desktop file: {}", e)),

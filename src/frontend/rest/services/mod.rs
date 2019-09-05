@@ -22,8 +22,8 @@ use futures::sink::Sink;
 
 mod attributes;
 mod config;
-mod default_path;
 mod dark_mode;
+mod default_path;
 mod exit;
 mod install;
 mod installation_status;

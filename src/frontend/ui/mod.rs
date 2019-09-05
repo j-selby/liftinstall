@@ -12,7 +12,7 @@ use log::Level;
 enum CallbackType {
     SelectInstallDir { callback_name: String },
     Log { msg: String, kind: String },
-    Test {}
+    Test {},
 }
 
 /// Starts the main web UI. Will return when UI is closed.

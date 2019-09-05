@@ -24,14 +24,14 @@ function intercept (method) {
 }
 
 // See if we have access to the JSON interface
-var has_external_interface = false;
+var has_external_interface = false
 try {
   window.external.invoke(JSON.stringify({
     Test: {}
   }))
-  has_external_interface = true;
+  has_external_interface = true
 } catch (e) {
-  console.warn("Running without JSON interface - unexpected behaviour may occur!")
+  console.warn('Running without JSON interface - unexpected behaviour may occur!')
 }
 
 // Overwrite loggers with the logging backend
@@ -101,13 +101,14 @@ var app = new Vue({
         '/api/exit',
         function () {},
         function (msg) {
-          var search_location = app.metadata.install_path.length > 0 ? app.metadata.install_path :
-            "the location where this installer is";
+          var search_location = app.metadata.install_path.length > 0 ? app.metadata.install_path
+            : 'the location where this installer is'
 
-          app.$router.replace({ name: 'showerr', params: { msg: msg +
+          app.$router.replace({ name: 'showerr',
+            params: { msg: msg +
                 '\n\nPlease upload the log file (in ' + search_location + ') to ' +
                 'the ' + app.attrs.name + ' team'
-          }});
+            } })
         }
       )
     },
@@ -116,4 +117,4 @@ var app = new Vue({
   }
 }).$mount('#app')
 
-console.log("Vue started")
+console.log('Vue started')

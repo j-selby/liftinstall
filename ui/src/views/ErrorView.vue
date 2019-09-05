@@ -38,12 +38,12 @@ export default {
     return {
       // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
       msg: this.$route.params.msg
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;")
-            .replace(/\n/g, "<br />"),
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+        .replace(/\n/g, '<br />'),
       remaining: window.history.length > 1
     }
   },

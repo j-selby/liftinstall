@@ -87,8 +87,8 @@ fn main() {
     // Copy for the main build
     copy(&target_config, output_dir.join("bootstrap.toml")).expect("Unable to copy config file");
 
-    let yarn_binary = which::which("yarn")
-        .expect("Failed to find yarn - please go ahead and install it!");
+    let yarn_binary =
+        which::which("yarn").expect("Failed to find yarn - please go ahead and install it!");
 
     // Build and deploy frontend files
     Command::new(&yarn_binary)
@@ -100,7 +100,8 @@ fn main() {
         .arg(ui_dir.to_str().expect("Unable to covert path"))
         .spawn()
         .unwrap()
-        .wait().expect("Unable to install Node.JS dependencies using Yarn");
+        .wait()
+        .expect("Unable to install Node.JS dependencies using Yarn");
     let return_code = Command::new(&yarn_binary)
         .args(&[
             "--cwd",
