@@ -53,7 +53,7 @@ function returnConfig (res) {
 
 app.get('/api/attrs', (req, res) => {
   res.send(
-    `var base_attributes = {"name":"yuzu","target_url":"https://raw.githubusercontent.com/j-selby/test-installer/master/config.linux.v2.toml"};`
+    { 'name': 'yuzu', 'target_url': 'https://raw.githubusercontent.com/j-selby/test-installer/master/config.linux.v2.toml' }
   )
 })
 

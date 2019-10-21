@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { ajax, stream_ajax } from './helpers'
+import axios from 'axios'
+import { ajax, stream_ajax as streamAjax } from './helpers'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
@@ -24,18 +25,18 @@ function intercept (method) {
 }
 
 // See if we have access to the JSON interface
-var has_external_interface = false
+var hasExternalInterface = false
 try {
   window.external.invoke(JSON.stringify({
     Test: {}
   }))
-  has_external_interface = true
+  hasExternalInterface = true
 } catch (e) {
   console.warn('Running without JSON interface - unexpected behaviour may occur!')
 }
 
 // Overwrite loggers with the logging backend
-if (has_external_interface) {
+if (hasExternalInterface) {
   window.onerror = function (msg, url, line) {
     window.external.invoke(
       JSON.stringify({
@@ -54,7 +55,7 @@ if (has_external_interface) {
 }
 
 // Disable F5
-function disable_shortcuts (e) {
+function disableShortcuts (e) {
   switch (e.keyCode) {
     case 116: // F5
       e.preventDefault()
@@ -69,19 +70,23 @@ ajax('/api/dark-mode', function (enable) {
   }
 })
 
-window.addEventListener('keydown', disable_shortcuts)
+window.addEventListener('keydown', disableShortcuts)
 
-document.getElementById('window-title').innerText =
-  base_attributes.name + ' Installer'
+axios.get('/api/attrs').then(function (resp) {
+  document.getElementById('window-title').innerText =
+    resp.data.name + ' Installer'
+}).catch(function (err) {
+  console.error(err)
+})
 
-function selectFileCallback (name) {
-  app.install_location = name
-}
+// function selectFileCallback (name) {
+//   app.install_location = name
+// }
 
 var app = new Vue({
   router: router,
   data: {
-    attrs: base_attributes,
+    attrs: {},
     config: {},
     install_location: '',
     // If the option to pick an install location should be provided
@@ -95,25 +100,28 @@ var app = new Vue({
   render: function (caller) {
     return caller(App)
   },
+  mounted: function () {
+    axios.get('/api/attrs').then(function (resp) {
+      app.attrs = resp.data
+    }).catch(function (err) {
+      console.error(err)
+    })
+  },
   methods: {
     exit: function () {
-      ajax(
-        '/api/exit',
-        function () {},
-        function (msg) {
-          var search_location = app.metadata.install_path.length > 0 ? app.metadata.install_path
-            : 'the location where this installer is'
+      axios.get('/api/attrs').catch(function (msg) {
+        var searchLocation = app.metadata.install_path.length > 0 ? app.metadata.install_path
+          : 'the location where this installer is'
 
-          app.$router.replace({ name: 'showerr',
-            params: { msg: msg +
-                '\n\nPlease upload the log file (in ' + search_location + ') to ' +
+        app.$router.replace({ name: 'showerr',
+          params: { msg: msg +
+                '\n\nPlease upload the log file (in ' + searchLocation + ') to ' +
                 'the ' + app.attrs.name + ' team'
-            } })
-        }
-      )
+          } })
+      })
     },
     ajax: ajax,
-    stream_ajax: stream_ajax
+    stream_ajax: streamAjax
   }
 }).$mount('#app')
 
