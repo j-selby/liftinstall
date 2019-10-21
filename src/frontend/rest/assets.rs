@@ -2,7 +2,8 @@
 
 extern crate mime_guess;
 
-use self::mime_guess::{get_mime_type, octet_stream};
+use self::mime_guess::mime::APPLICATION_OCTET_STREAM;
+use self::mime_guess::from_ext;
 
 macro_rules! include_files_as_assets {
     ( $target_match:expr, $( $file_name:expr ),* ) => {
@@ -23,9 +24,9 @@ pub fn file_from_string(file_path: &str) -> Option<(String, &'static [u8])> {
         Some(ext_ptr) => {
             let ext = &file_path[ext_ptr + 1..];
 
-            get_mime_type(ext)
+            from_ext(ext).first_or_octet_stream()
         }
-        None => octet_stream(),
+        None => APPLICATION_OCTET_STREAM,
     };
 
     let string_mime = guessed_mime.to_string();

@@ -81,9 +81,11 @@ axios.get('/api/attrs').then(function (resp) {
   console.error(err)
 })
 
-// function selectFileCallback (name) {
-//   app.install_location = name
-// }
+function selectFileCallback (name) {
+  app.install_location = name
+}
+
+window.selectFileCallback = selectFileCallback
 
 var app = new Vue({
   router: router,

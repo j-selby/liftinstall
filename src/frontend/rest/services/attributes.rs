@@ -3,7 +3,6 @@
 //! The /api/attr call returns an executable script containing session variables.
 
 use frontend::rest::services::default_future;
-use frontend::rest::services::encapsulate_json;
 use frontend::rest::services::Future;
 use frontend::rest::services::Request;
 use frontend::rest::services::Response;
@@ -16,13 +15,10 @@ use logging::LoggingErrors;
 pub fn handle(service: &WebService, _req: Request) -> Future {
     let framework = service.get_framework_read();
 
-    let file = encapsulate_json(
-        "base_attributes",
-        &framework
+    let file = framework
             .base_attributes
             .to_json_str()
-            .log_expect("Failed to render JSON representation of config"),
-    );
+            .log_expect("Failed to render JSON representation of config");
 
     default_future(
         Response::new()

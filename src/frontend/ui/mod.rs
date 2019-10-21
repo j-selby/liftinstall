@@ -45,7 +45,7 @@ pub fn start_ui(app_name: &str, http_address: &str, is_launcher: bool) {
                         if new_path.to_string_lossy().len() > 0 {
                             let result = serde_json::to_string(&new_path)
                                 .log_expect("Unable to serialize response");
-                            let command = format!("{}({});", callback_name, result);
+                            let command = format!("window.{}({});", callback_name, result);
                             debug!("Injecting response: {}", command);
                             cb_result = wv.eval(&command);
                         }
