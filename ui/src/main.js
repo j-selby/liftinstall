@@ -2,12 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import { ajax, stream_ajax as streamAjax } from './helpers'
+import VueAxios from 'vue-axios'
+import { stream_ajax as streamAjax } from './helpers'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
 Vue.config.productionTip = false
 Vue.use(Buefy)
+Vue.use(VueAxios, axios)
 
 // Borrowed from http://tobyho.com/2012/07/27/taking-over-console-log/
 function intercept (method) {
@@ -64,8 +66,8 @@ function disableShortcuts (e) {
 }
 
 // Check to see if we need to enable dark mode
-ajax('/api/dark-mode', function (enable) {
-  if (enable) {
+axios.get('/api/dark-mode').then(function (resp) {
+  if (resp.data === true) {
     document.body.classList.add('has-background-black-ter')
   }
 })
@@ -120,7 +122,6 @@ var app = new Vue({
           } })
       })
     },
-    ajax: ajax,
     stream_ajax: streamAjax
   }
 }).$mount('#app')

@@ -18,19 +18,19 @@ export default {
   methods: {
     download_install_status: function () {
       var that = this
-      this.$root.ajax('/api/installation-status', function (e) {
-        that.$root.metadata = e
+      this.$http.get('/api/installation-status').then(function (resp) {
+        that.$root.metadata = resp.data
 
         that.download_config()
       })
     },
     download_config: function () {
       var that = this
-      this.$root.ajax('/api/config', function (e) {
-        that.$root.config = e
+      this.$http.get('/api/config').then(function (resp) {
+        that.$root.config = resp.data
 
         that.choose_next_state()
-      }, function (e) {
+      }).catch(function (e) {
         console.error('Got error while downloading config: ' +
                     e)
 
@@ -83,9 +83,9 @@ export default {
 
         // Need to do a bit more digging to get at the
         // install location.
-        this.$root.ajax('/api/default-path', function (e) {
-          if (e.path != null) {
-            app.install_location = e.path
+        this.$http.get('/api/default-path').then(function (resp) {
+          if (resp.data.path != null) {
+            app.install_location = resp.data.path
           }
         })
 
