@@ -274,6 +274,7 @@ mod natives {
         target: &str,
         args: &str,
         working_dir: &str,
+        _exe_path: &str,
     ) -> Result<String, String> {
         // FIXME: no icon will be shown since no icon is provided
         let data_local_dir = dirs::data_local_dir();
@@ -318,6 +319,7 @@ mod natives {
         target: &str,
         args: &str,
         working_dir: &str,
+        _exe_path: &str,
     ) -> Result<String, String> {
         warn!("STUB! Creating shortcut is not implemented on macOS");
         Ok("".to_string())
