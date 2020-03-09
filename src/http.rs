@@ -7,7 +7,7 @@ use reqwest::header::CONTENT_LENGTH;
 use std::io::Read;
 use std::time::Duration;
 
-use reqwest::async::Client as AsyncClient;
+use reqwest::r#async::Client as AsyncClient;
 use reqwest::Client;
 
 /// Asserts that a URL is valid HTTPS, else returns an error.

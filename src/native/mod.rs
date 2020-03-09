@@ -283,7 +283,7 @@ mod natives {
                 let mut path = x;
                 path.push("applications");
                 match create_dir_all(path.to_path_buf()) {
-                    Ok(_) => (()),
+                    Ok(_) => (),
                     Err(e) => {
                         return Err(format!(
                             "Local data directory does not exist and cannot be created: {}",
@@ -349,7 +349,7 @@ mod natives {
         let mut processes: Vec<super::Process> = Vec::new();
         let mut system = sysinfo::System::new();
         system.refresh_all();
-        for (pid, procs) in system.get_process_list() {
+        for (pid, procs) in system.get_processes() {
             processes.push(super::Process {
                 pid: *pid as usize,
                 name: procs.name().to_string(),

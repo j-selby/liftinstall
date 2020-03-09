@@ -67,7 +67,7 @@ use clap::Arg;
 
 use config::BaseAttributes;
 
-static RAW_CONFIG: &'static str = include_str!(concat!(env!("OUT_DIR"), "/bootstrap.toml"));
+const RAW_CONFIG: &str = include_str!(concat!(env!("OUT_DIR"), "/bootstrap.toml"));
 
 fn main() {
     let config = BaseAttributes::from_toml_str(RAW_CONFIG).expect("Config file could not be read");

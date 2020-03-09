@@ -139,7 +139,7 @@ impl Task for InstallPackageTask {
             info!("Creating file: {:?}", string_name);
 
             if !installed_files.contains(&string_name) {
-                installed_files.push(string_name.to_string());
+                installed_files.push(string_name);
             }
 
             let mut file_metadata = OpenOptions::new();
@@ -168,7 +168,7 @@ impl Task for InstallPackageTask {
 
         // Save metadata about this package
         context.database.packages.push(LocalInstallation {
-            name: package.name.to_owned(),
+            name: package.name,
             version,
             shortcuts,
             files: installed_files,
