@@ -46,6 +46,8 @@ fn handle_binary(config: &BaseAttributes) {
 
     cc::Build::new()
         .cpp(true)
+        .define("_WIN32_WINNT", Some("0x0600"))
+        .define("WINVER", Some("0x0600"))
         .file("src/native/interop.cpp")
         .compile("interop");
 }
