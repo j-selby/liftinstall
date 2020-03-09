@@ -2,14 +2,14 @@
 //!
 //! The /api/install call installs a set of packages dictated by a POST request.
 
-use frontend::rest::services::stream_progress;
-use frontend::rest::services::Future;
-use frontend::rest::services::Request;
-use frontend::rest::services::WebService;
+use crate::frontend::rest::services::stream_progress;
+use crate::frontend::rest::services::Future;
+use crate::frontend::rest::services::Request;
+use crate::frontend::rest::services::WebService;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
-use installer::InstallMessage;
+use crate::installer::InstallMessage;
 
 use futures::future::Future as _;
 use futures::stream::Stream;

@@ -4,18 +4,18 @@
 //!
 //! This endpoint should be usable directly from a <script> tag during loading.
 
-use frontend::rest::services::Future;
-use frontend::rest::services::Request;
-use frontend::rest::services::Response;
-use frontend::rest::services::WebService;
+use crate::frontend::rest::services::Future;
+use crate::frontend::rest::services::Request;
+use crate::frontend::rest::services::Response;
+use crate::frontend::rest::services::WebService;
 
 use hyper::header::{ContentLength, ContentType};
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
-use config::Config;
+use crate::config::Config;
 
-use http::build_async_client;
+use crate::http::build_async_client;
 
 use futures::stream::Stream;
 use futures::Future as _;

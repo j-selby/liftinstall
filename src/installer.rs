@@ -21,28 +21,28 @@ use std::io::Cursor;
 use std::process::Command;
 use std::process::{exit, Stdio};
 
-use config::BaseAttributes;
-use config::Config;
+use crate::config::BaseAttributes;
+use crate::config::Config;
 
-use sources::types::Version;
+use crate::sources::types::Version;
 
-use tasks::install::InstallTask;
-use tasks::uninstall::UninstallTask;
-use tasks::uninstall_global_shortcut::UninstallGlobalShortcutsTask;
-use tasks::DependencyTree;
-use tasks::TaskMessage;
+use crate::tasks::install::InstallTask;
+use crate::tasks::uninstall::UninstallTask;
+use crate::tasks::uninstall_global_shortcut::UninstallGlobalShortcutsTask;
+use crate::tasks::DependencyTree;
+use crate::tasks::TaskMessage;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
 use dirs::home_dir;
 
 use std::fs::remove_file;
 
-use http;
+use crate::http;
 
 use number_prefix::{NumberPrefix, Prefixed, Standalone};
 
-use native;
+use crate::native;
 
 /// A message thrown during the installation of packages.
 #[derive(Serialize)]

@@ -4,12 +4,12 @@
 
 use std::sync::{Arc, RwLock, RwLockReadGuard, RwLockWriteGuard};
 
-use installer::{InstallMessage, InstallerFramework};
+use crate::installer::{InstallMessage, InstallerFramework};
 
 use hyper::server::Service;
 use hyper::{Method, StatusCode};
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
 use std::sync::mpsc::{channel, Sender};
 

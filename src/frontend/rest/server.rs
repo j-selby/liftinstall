@@ -2,11 +2,11 @@
 //!
 //! Contains the over-arching server object + methods to manipulate it.
 
-use frontend::rest::services::WebService;
+use crate::frontend::rest::services::WebService;
 
-use installer::InstallerFramework;
+use crate::installer::InstallerFramework;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
 use hyper::server::Http;
 

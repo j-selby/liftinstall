@@ -1,26 +1,26 @@
 //! Installs a specific package.
 
-use installer::InstallerFramework;
+use crate::installer::InstallerFramework;
 
-use tasks::download_pkg::DownloadPackageTask;
-use tasks::install_shortcuts::InstallShortcutsTask;
-use tasks::save_database::SaveDatabaseTask;
-use tasks::uninstall_pkg::UninstallPackageTask;
-use tasks::Task;
-use tasks::TaskDependency;
-use tasks::TaskMessage;
-use tasks::TaskOrdering;
-use tasks::TaskParamType;
+use crate::tasks::download_pkg::DownloadPackageTask;
+use crate::tasks::install_shortcuts::InstallShortcutsTask;
+use crate::tasks::save_database::SaveDatabaseTask;
+use crate::tasks::uninstall_pkg::UninstallPackageTask;
+use crate::tasks::Task;
+use crate::tasks::TaskDependency;
+use crate::tasks::TaskMessage;
+use crate::tasks::TaskOrdering;
+use crate::tasks::TaskParamType;
 
-use config::PackageDescription;
-use installer::LocalInstallation;
+use crate::config::PackageDescription;
+use crate::installer::LocalInstallation;
 
 use std::fs::create_dir_all;
 use std::io::copy;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
-use archives;
+use crate::archives;
 
 use std::fs::OpenOptions;
 use std::path::Path;

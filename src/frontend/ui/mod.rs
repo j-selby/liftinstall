@@ -4,7 +4,7 @@
 
 use web_view::Content;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
 use log::Level;
 

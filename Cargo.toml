@@ -1,6 +1,7 @@
 [package]
 name = "liftinstall"
 version = "0.2.0"
+edition = "2018"
 authors = ["James <jselby@jselby.net>"]
 repository = "https://github.com/j-selby/liftinstall.git"
 documentation = "https://liftinstall.jselby.net"

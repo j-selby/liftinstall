@@ -9,7 +9,7 @@ use std::{thread, time};
 
 use clap::{App, ArgMatches};
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
 /// Swaps around the main executable if needed.
 pub fn perform_swap(current_exe: &PathBuf, to_path: Option<&str>) {

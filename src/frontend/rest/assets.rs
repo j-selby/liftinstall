@@ -2,8 +2,8 @@
 
 extern crate mime_guess;
 
-use self::mime_guess::mime::APPLICATION_OCTET_STREAM;
 use self::mime_guess::from_ext;
+use self::mime_guess::mime::APPLICATION_OCTET_STREAM;
 
 macro_rules! include_files_as_assets {
     ( $target_match:expr, $( $file_name:expr ),* ) => {

@@ -4,8 +4,8 @@
 
 use std::sync::{Arc, RwLock};
 
-use installer::InstallerFramework;
-use logging::LoggingErrors;
+use crate::installer::InstallerFramework;
+use crate::logging::LoggingErrors;
 
 pub mod rest;
 mod ui;

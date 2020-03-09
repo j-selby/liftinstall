@@ -2,11 +2,11 @@
 //!
 //! The /api/exit closes down the application.
 
-use frontend::rest::services::default_future;
-use frontend::rest::services::Future;
-use frontend::rest::services::Request;
-use frontend::rest::services::Response;
-use frontend::rest::services::WebService;
+use crate::frontend::rest::services::default_future;
+use crate::frontend::rest::services::Future;
+use crate::frontend::rest::services::Request;
+use crate::frontend::rest::services::Response;
+use crate::frontend::rest::services::WebService;
 
 use hyper::header::ContentType;
 use hyper::StatusCode;

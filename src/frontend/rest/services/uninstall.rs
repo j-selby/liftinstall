@@ -2,15 +2,15 @@
 //!
 //! The /api/uninstall call uninstalls all packages.
 
-use frontend::rest::services::default_future;
-use frontend::rest::services::stream_progress;
-use frontend::rest::services::Future;
-use frontend::rest::services::Request;
-use frontend::rest::services::WebService;
+use crate::frontend::rest::services::default_future;
+use crate::frontend::rest::services::stream_progress;
+use crate::frontend::rest::services::Future;
+use crate::frontend::rest::services::Request;
+use crate::frontend::rest::services::WebService;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
-use installer::InstallMessage;
+use crate::installer::InstallMessage;
 
 pub fn handle(service: &WebService, _req: Request) -> Future {
     let framework = service.framework.clone();

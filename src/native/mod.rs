@@ -15,7 +15,7 @@ mod natives {
 
     const PROCESS_LEN: usize = 10192;
 
-    use logging::LoggingErrors;
+    use crate::logging::LoggingErrors;
 
     use std::env;
 
@@ -257,7 +257,7 @@ mod natives {
 
     use std::env;
 
-    use logging::LoggingErrors;
+    use crate::logging::LoggingErrors;
 
     use sysinfo::{ProcessExt, SystemExt};
 

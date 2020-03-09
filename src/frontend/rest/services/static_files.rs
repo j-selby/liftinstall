@@ -4,18 +4,18 @@
 //!
 //! e.g. index.html, main.js, ...
 
-use frontend::rest::assets;
+use crate::frontend::rest::assets;
 
-use frontend::rest::services::default_future;
-use frontend::rest::services::Future;
-use frontend::rest::services::Request;
-use frontend::rest::services::Response;
-use frontend::rest::services::WebService;
+use crate::frontend::rest::services::default_future;
+use crate::frontend::rest::services::Future;
+use crate::frontend::rest::services::Request;
+use crate::frontend::rest::services::Response;
+use crate::frontend::rest::services::WebService;
 
 use hyper::header::{ContentLength, ContentType};
 use hyper::StatusCode;
 
-use logging::LoggingErrors;
+use crate::logging::LoggingErrors;
 
 pub fn handle(_service: &WebService, req: Request) -> Future {
     // At this point, we have a web browser client. Search for a index page
