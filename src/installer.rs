@@ -40,7 +40,7 @@ use std::fs::remove_file;
 
 use crate::http;
 
-use number_prefix::{NumberPrefix, Prefixed, Standalone};
+use number_prefix::NumberPrefix::{self, Prefixed, Standalone};
 
 use crate::native;
 

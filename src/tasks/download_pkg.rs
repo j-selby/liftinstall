@@ -12,7 +12,7 @@ use crate::tasks::resolver::ResolvePackageTask;
 
 use crate::http::stream_file;
 
-use number_prefix::{NumberPrefix, Prefixed, Standalone};
+use number_prefix::NumberPrefix::{self, Prefixed, Standalone};
 
 use crate::logging::LoggingErrors;
 

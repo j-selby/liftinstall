@@ -113,7 +113,7 @@ var app = new Vue({
   },
   methods: {
     exit: function () {
-      axios.get('/api/attrs').catch(function (msg) {
+      axios.get('/api/exit').catch(function (msg) {
         var searchLocation = app.metadata.install_path.length > 0 ? app.metadata.install_path
           : 'the location where this installer is'
 
