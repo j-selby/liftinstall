@@ -62,7 +62,7 @@ export function stream_ajax (path, callback, successCallback, failCallback, data
     var form = ''
 
     for (var key in data) {
-      if (!Object.prototype.hasOwnProperty.call(data, key)) {
+      if (!data[key]) {
         continue
       }
 

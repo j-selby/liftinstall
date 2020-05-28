@@ -7,6 +7,8 @@ const port = 3000
 let showError = false
 let maintenance = false
 let launcher = false
+let fileExists = false
+let darkMode = false
 
 function progressSimulation (res) {
   if (showError) {
@@ -73,7 +75,7 @@ app.get('/api/attrs', (req, res) => {
 })
 
 app.get('/api/dark-mode', (req, res) => {
-  res.json(false)
+  res.json(darkMode)
 })
 
 app.get('/api/installation-status', (req, res) => {
@@ -114,6 +116,35 @@ app.get('/api/mock_error', (req, res) => {
   console.log('-- Toggle error emulation')
   showError = !showError
   res.status(200).send(`Error emulation: ${showError}\n`)
+})
+
+app.post('/api/verify-path', (req, res) => {
+  console.log('-- Verify Path')
+  res.send({
+    exists: fileExists
+  })
+})
+
+process.argv.forEach((val, index) => {
+  switch (val) {
+    case 'maintenance':
+      maintenance = true
+      console.log('Simulating maintenance mode')
+      break
+    case 'launcher':
+      maintenance = true
+      launcher = true
+      console.log('Simulating launcher mode')
+      break
+    case 'exists':
+      fileExists = true
+      console.log('Simulating file exists situation')
+      break
+    case 'dark':
+      darkMode = true
+      console.log('Simulating dark mode')
+      break
+  }
 })
 
 console.log(`Listening on ${port}...`)

@@ -62,16 +62,16 @@ export default {
       this.$root.stream_ajax(targetUrl, function (line) {
         // On progress line received from server
 
-        if (Object.prototype.hasOwnProperty.call(line, 'Status')) {
+        if (line.Status) {
           that.progress_message = line.Status[0]
           that.progress = line.Status[1] * 100
         }
 
-        if (Object.prototype.hasOwnProperty.call(line, 'PackageInstalled')) {
+        if (line.PackageInstalled) {
           that.packages_installed += 1
         }
 
-        if (Object.prototype.hasOwnProperty.call(line, 'Error')) {
+        if (line.Error) {
           that.failed_with_error = true
           that.$router.replace({ name: 'showerr', params: { msg: line.Error } })
         }
