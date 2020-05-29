@@ -124,7 +124,7 @@ var app = new Vue({
   methods: {
     exit: function () {
       axios.get('/api/exit').catch(function (msg) {
-        var searchLocation = app.metadata.install_path.length > 0 ? app.metadata.install_path
+        var searchLocation = (app.metadata.install_path && app.metadata.install_path.length > 0) ? app.metadata.install_path
           : i18n.t('error.location_unknown')
 
         app.$router.replace({

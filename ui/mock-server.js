@@ -5,6 +5,7 @@ const app = express()
 const port = 3000
 
 let showError = false
+let showConfigError = false
 let maintenance = false
 let launcher = false
 let fileExists = false
@@ -30,7 +31,7 @@ function progressSimulation (res) {
 }
 
 function returnConfig (res) {
-  if (showError) {
+  if (showConfigError) {
     res.status(500).json({})
     return
   }
@@ -143,6 +144,14 @@ process.argv.forEach((val, index) => {
     case 'dark':
       darkMode = true
       console.log('Simulating dark mode')
+      break
+    case 'config-error':
+      showConfigError = true
+      console.log('Simulating configuration errors')
+      break
+    case 'error':
+      showError = true
+      console.log('Simulating errors')
       break
   }
 })
