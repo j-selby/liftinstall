@@ -5,6 +5,8 @@ const app = express()
 const port = 3000
 
 let showError = false
+let maintenance = false
+let launcher = false
 
 function progressSimulation (res) {
   if (showError) {
@@ -22,7 +24,7 @@ function progressSimulation (res) {
       res.status(200).end()
       clearInterval(timer)
     }
-  }, 1500)
+  }, 500)
 }
 
 function returnConfig (res) {
@@ -78,8 +80,8 @@ app.get('/api/installation-status', (req, res) => {
   res.json({
     database: { packages: [], shortcuts: [] },
     install_path: null,
-    preexisting_install: false,
-    is_launcher: false,
+    preexisting_install: maintenance,
+    is_launcher: launcher,
     launcher_path: null
   })
 })
@@ -95,7 +97,7 @@ app.get('/api/config', (req, res) => {
 })
 
 app.post('/api/start-install', (req, res) => {
-  console.log(`-- Install: ${req.body}`)
+  console.log(`-- Install: ${req}`)
   progressSimulation(res)
 })
 
@@ -105,7 +107,7 @@ app.get('/api/exit', (req, res) => {
     res.status(500).send('Simulated error: Nothing to see here.')
     return
   }
-  res.status(204)
+  res.status(204).send()
 })
 
 app.get('/api/mock_error', (req, res) => {
