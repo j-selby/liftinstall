@@ -11,6 +11,10 @@ glob('src/locales/!(messages).json', {}, (e, files) => {
     messages.push(locale_messages)
   }
   console.log('Merging messages...')
-  messages = merge.all(messages)
+  if (messages && messages.length > 1) {
+    messages = merge.all(messages)
+  } else {
+    messages = messages[0] // single locale mode
+  }
   fs.writeFileSync('src/locales/messages.json', JSON.stringify(messages), {})
 })
